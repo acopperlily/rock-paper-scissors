@@ -15,7 +15,37 @@
         return choice;
       }
       // Testing function
-      console.log(computerPlay());
+      const playerSelection = prompt();
+      const computerSelection = computerPlay();
+      console.log(playerSelection);
+      console.log(computerSelection);
+
+      function playRound(playerSelection, computerSelection) {
+        if (playerSelection == computerSelection) {
+          return "It's a tie!";
+        }
+        // Way too verbose if/else section
+        if (playerSelection == "Rock") {
+          if (computerSelection == "Scissors") {
+            return "You win! Rock beats Scissors.";
+          } else {
+            return "You lose! Paper beats Rock.";
+          }
+        } else if (playerSelection == "Paper") {
+          if (computerSelection == "Rock") {
+            return "You win! Paper beats Rock.";
+          } else {
+            return "You lose! Scissors beat Paper.";
+          }
+        } else {
+          if (computerSelection == "Paper") {
+            return "You win! Scissors beat Paper.";
+          } else {
+            return "You lose! Rock beats Scissors.";
+          }
+        }
+      }
+      console.log(playRound(playerSelection, computerSelection));
     </script>
   </body>
 </html>
