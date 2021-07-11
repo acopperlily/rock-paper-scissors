@@ -29,7 +29,9 @@
         if (playerSelection == computerSelection) {
           return "It's a tie!";
         }
+
         // Way too verbose if/else section
+        // Can probably use template literals
         if (playerSelection == "Rock") {
           if (computerSelection == "Scissors") {
             return "You win! Rock beats Scissors.";
@@ -50,9 +52,12 @@
           }
         }
       }
-      //console.log(playRound(playerSelection, computerSelection));
 
+      // Play 5 rounds
       function game() {
+        // I dunno, need to thing about how to score
+        let userScore = (computerScore = ties = 0);
+
         for (let i = 0; i < 5; i++) {
           console.log(i);
           const playerSelection = userPlay();
@@ -60,7 +65,13 @@
           const computerSelection = computerPlay();
           console.log(playRound(playerSelection, computerSelection));
         }
+
+        // Fix this later
+        console.log(
+          `You: ${userScore} Computer: ${computerScore} Ties: ${ties}`
+        );
       }
+
       game();
     </script>
   </body>
