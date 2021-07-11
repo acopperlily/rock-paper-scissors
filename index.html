@@ -8,21 +8,23 @@
   </head>
   <body>
     <script>
+      // User makes choice
+      function userPlay() {
+        let playerSelection = prompt();
+        playerSelection =
+          playerSelection[0].toUpperCase() +
+          playerSelection.slice(1).toLowerCase();
+        return playerSelection;
+      }
+
       // Computer makes choice
       function computerPlay() {
         const items = ["Rock", "Paper", "Scissors"];
         let choice = items[Math.floor(Math.random() * items.length)];
         return choice;
       }
-      // Testing function
-      let playerSelection = prompt();
-      playerSelection =
-        playerSelection[0].toUpperCase() +
-        playerSelection.slice(1).toLowerCase();
-      const computerSelection = computerPlay();
-      console.log(playerSelection);
-      console.log(computerSelection);
 
+      // Play one round
       function playRound(playerSelection, computerSelection) {
         if (playerSelection == computerSelection) {
           return "It's a tie!";
@@ -48,7 +50,18 @@
           }
         }
       }
-      console.log(playRound(playerSelection, computerSelection));
+      //console.log(playRound(playerSelection, computerSelection));
+
+      function game() {
+        for (let i = 0; i < 5; i++) {
+          console.log(i);
+          const playerSelection = userPlay();
+
+          const computerSelection = computerPlay();
+          console.log(playRound(playerSelection, computerSelection));
+        }
+      }
+      game();
     </script>
   </body>
 </html>
