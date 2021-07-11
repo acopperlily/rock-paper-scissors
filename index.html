@@ -15,7 +15,10 @@
         return choice;
       }
       // Testing function
-      const playerSelection = prompt();
+      let playerSelection = prompt();
+      playerSelection =
+        playerSelection[0].toUpperCase() +
+        playerSelection.slice(1).toLowerCase();
       const computerSelection = computerPlay();
       console.log(playerSelection);
       console.log(computerSelection);
