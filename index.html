@@ -27,6 +27,7 @@
       // Play one round
       function playRound(playerSelection, computerSelection) {
         if (playerSelection == computerSelection) {
+          ties++;
           return "It's a tie!";
         }
 
@@ -34,20 +35,26 @@
         // Can probably use template literals
         if (playerSelection == "Rock") {
           if (computerSelection == "Scissors") {
+            userScore++;
             return "You win! Rock beats Scissors.";
           } else {
+            computerScore++;
             return "You lose! Paper beats Rock.";
           }
         } else if (playerSelection == "Paper") {
           if (computerSelection == "Rock") {
+            userScore++;
             return "You win! Paper beats Rock.";
           } else {
+            computerScore++;
             return "You lose! Scissors beat Paper.";
           }
         } else {
           if (computerSelection == "Paper") {
+            userScore++;
             return "You win! Scissors beat Paper.";
           } else {
+            computerScore++;
             return "You lose! Rock beats Scissors.";
           }
         }
@@ -55,9 +62,6 @@
 
       // Play 5 rounds
       function game() {
-        // I dunno, need to thing about how to score
-        let userScore = (computerScore = ties = 0);
-
         for (let i = 0; i < 5; i++) {
           console.log(i);
           const playerSelection = userPlay();
@@ -66,11 +70,15 @@
           console.log(playRound(playerSelection, computerSelection));
         }
 
-        // Fix this later
+        // Print final scores
         console.log(
           `You: ${userScore} Computer: ${computerScore} Ties: ${ties}`
         );
       }
+
+      let userScore = 0;
+      let computerScore = 0;
+      let ties = 0;
 
       game();
     </script>
