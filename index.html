@@ -32,31 +32,22 @@
         }
 
         // Way too verbose if/else section
+        // Fixed some of it with ternary operators
         // Can probably use template literals
         if (playerSelection == "Rock") {
-          if (computerSelection == "Scissors") {
-            userScore++;
-            return "You win! Rock beats Scissors.";
-          } else {
-            computerScore++;
-            return "You lose! Paper beats Rock.";
-          }
+          return computerSelection == "Scissors"
+            ? (userScore++, "You win! Rock beats Scissors.")
+            : (computerScore++, "You lose! Paper beats Rock.");
         } else if (playerSelection == "Paper") {
-          if (computerSelection == "Rock") {
-            userScore++;
-            return "You win! Paper beats Rock.";
-          } else {
-            computerScore++;
-            return "You lose! Scissors beat Paper.";
-          }
+          return computerSelection == "Rock"
+            ? (userScore++, "You win! Paper beats Rock.")
+            : (computerScore++, "You lose! Scissors beat Paper.");
+        } else if (playerSelection == "Scissors") {
+          return computerSelection == "Paper"
+            ? (userScore++, "You win! Scissors beat Paper.")
+            : (computerScore++, "You lose! Rock beats Scissors.");
         } else {
-          if (computerSelection == "Paper") {
-            userScore++;
-            return "You win! Scissors beat Paper.";
-          } else {
-            computerScore++;
-            return "You lose! Rock beats Scissors.";
-          }
+          return "Invalid input!";
         }
       }
 
@@ -67,7 +58,8 @@
           const playerSelection = userPlay();
 
           const computerSelection = computerPlay();
-          console.log(playRound(playerSelection, computerSelection));
+          let score = playRound(playerSelection, computerSelection);
+          console.log(score);
         }
 
         // Print final scores
