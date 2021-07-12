@@ -31,24 +31,21 @@
           return "It's a tie!";
         }
 
-        // Way too verbose if/else section
-        // Fixed some of it with ternary operators
-        // Can probably use template literals
+        let userWon = false;
+
         if (playerSelection == "Rock") {
-          return computerSelection == "Scissors"
-            ? (userScore++, "You win! Rock beats Scissors.")
-            : (computerScore++, "You lose! Paper beats Rock.");
+          userWon = computerSelection == "Scissors" ? true : false;
         } else if (playerSelection == "Paper") {
-          return computerSelection == "Rock"
-            ? (userScore++, "You win! Paper beats Rock.")
-            : (computerScore++, "You lose! Scissors beat Paper.");
+          userWon = computerSelection == "Rock" ? true : false;
         } else if (playerSelection == "Scissors") {
-          return computerSelection == "Paper"
-            ? (userScore++, "You win! Scissors beat Paper.")
-            : (computerScore++, "You lose! Rock beats Scissors.");
+          userWon = computerSelection == "Paper" ? true : false;
         } else {
           return "Invalid input!";
         }
+        console.log(`userWon: ${userWon}`);
+        return userWon == true
+          ? `You won! ${playerSelection} beats ${computerSelection}.`
+          : `You lose! ${computerSelection} beats ${playerSelection}.`;
       }
 
       // Play 5 rounds
