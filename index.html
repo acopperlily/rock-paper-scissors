@@ -34,11 +34,17 @@
         let userWon = false;
 
         if (playerSelection == "Rock") {
-          userWon = computerSelection == "Scissors" ? true : false;
+          if (computerSelection == "Scissors") {
+            userWon = true;
+          }
         } else if (playerSelection == "Paper") {
-          userWon = computerSelection == "Rock" ? true : false;
+          if (computerSelection == "Rock") {
+            userWon = true;
+          }
         } else if (playerSelection == "Scissors") {
-          userWon = computerSelection == "Paper" ? true : false;
+          if (computerSelection == "Paper") {
+            userWon = true;
+          }
         } else {
           return "Invalid input!";
         }
