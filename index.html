@@ -24,6 +24,14 @@
         return choice;
       }
 
+      function updateScore(userWon) {
+        if (userWon) {
+          userScore++;
+        } else {
+          computerScore++;
+        }
+      }
+
       // Play one round
       function playRound(playerSelection, computerSelection) {
         if (playerSelection == computerSelection) {
@@ -49,11 +57,11 @@
           return "Invalid input!";
         }
 
+        updateScore(userWon);
+
         if (userWon) {
-          userScore++;
           return `You won! ${playerSelection} beats ${computerSelection}.`;
         } else {
-          computerScore++;
           return `You lose! ${computerSelection} beats ${playerSelection}.`;
         }
       }
