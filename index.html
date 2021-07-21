@@ -15,6 +15,8 @@
     </div>
 
     <div id="results">
+      <p id="battle"></p>
+      <p id="winner"></p>
       <p id="score"></p>
     </div>
 
@@ -29,15 +31,23 @@
 
       buttons.forEach((button) => {
         button.addEventListener('click', () => {
-          console.log(button.id);
           const computerSelection = computerPlay();
           const playerSelection = button.id;
 
-          const winner = playRound(playerSelection, computerSelection);
-          console.log(winner);
+          // Display user and computer choices
+          const battle = document.querySelector('#battle');
+          battle.textContent = `${playerSelection} vs. ${computerSelection}`;
 
+          // Play one round
+          const round = playRound(playerSelection, computerSelection);
+
+          // Display winner
+          const winner = document.querySelector('#winner');
+          winner.textContent = `${round}`;
+
+          // Display scores
           const scores = document.querySelector('#score')
-          results = scores.textContent = `You: ${userScore} Computer: ${computerScore} Tie: ${tie}`;
+          scores.textContent = `You: ${userScore} Computer: ${computerScore} Tie: ${tie}`;
         });
       });
 
