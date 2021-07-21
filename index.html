@@ -18,6 +18,7 @@
       <p id="battle"></p>
       <p id="winner"></p>
       <p id="score"></p>
+      <p id="champ"></p>
     </div>
 
     <script>
@@ -41,13 +42,31 @@
           // Play one round
           const round = playRound(playerSelection, computerSelection);
 
-          // Display winner
+          // Display winner of round
           const winner = document.querySelector('#winner');
           winner.textContent = `${round}`;
 
           // Display scores
           const scores = document.querySelector('#score')
           scores.textContent = `You: ${userScore} Computer: ${computerScore} Tie: ${tie}`;
+
+          // Check scores
+          let champion = checkScore(userScore, computerScore);
+
+          // Display champion of all rounds
+          let champ = document.querySelector('#champ');
+
+          if (champion) {
+            champ = document.querySelector('#champ');
+            champ.textContent = champion;
+
+            // Reset scores
+            userScore = 0;
+            computerScore = 0;
+            tie = 0;
+          } else {
+            champ.textContent = '';
+          }
         });
       });
 
@@ -100,25 +119,13 @@
         }
       }
 
-      // Play 5 rounds
-      function game() {
-        for (let i = 0; i < 1; i++) {
-          const playerSelection = userPlay();
-          const computerSelection = computerPlay();
-          console.log(playerSelection);
-
-          //console.log(playRound(playerSelection, computerSelection));
+      function checkScore(userScore, computerScore) {
+        if (userScore === 5) {
+          return 'You win!';
+        } else if (computerScore === 5) {
+          return 'The computer wins!';
         }
-
-        // Print final scores
-        // console.log(`You: ${userScore} Computer: ${computerScore} Tie: ${tie}`);
       }
-
-      // let userScore = 0;
-      // let computerScore = 0;
-      // let tie = 0;
-
-      //game();
     </script>
   </body>
 </html>
