@@ -14,6 +14,10 @@
       <button id="Scissors">Scissors</button>
     </div>
 
+    <div id="results">
+      <p id="score"></p>
+    </div>
+
     <script>
 
       let userScore = 0;
@@ -28,8 +32,12 @@
           console.log(button.id);
           const computerSelection = computerPlay();
           const playerSelection = button.id;
-          console.log(playRound(playerSelection, computerSelection));
-          console.log(`You: ${userScore} Computer: ${computerScore} Tie: ${tie}`);
+
+          const winner = playRound(playerSelection, computerSelection);
+          console.log(winner);
+
+          const scores = document.querySelector('#score')
+          results = scores.textContent = `You: ${userScore} Computer: ${computerScore} Tie: ${tie}`;
         });
       });
 
