@@ -7,16 +7,55 @@
     <title>Document</title>
   </head>
   <body>
-    <script>
-      // User makes choice
-      function userPlay() {
-        let playerSelection = prompt();
-        playerSelection =
-          playerSelection[0].toUpperCase() +
-          playerSelection.slice(1).toLowerCase();
-        return playerSelection;
-      }
 
+    <div id="selection">
+      <button id="Rock">Rock</button>
+      <button id="Paper">Paper</button>
+      <button id="Scissors">Scissors</button>
+    </div>
+
+    <script>
+      const buttons = document.querySelectorAll('button');
+
+      let playerSelection;
+      // const computerSelection = computerPlay();
+      // console.log(computerSelection);
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          console.log(button.id);
+          const computerSelection = computerPlay();
+          playerSelection = button.id;
+          console.log(playRound(playerSelection, computerSelection));
+        });
+        // return playRound(playerSelection, computerSelection);
+      });
+
+      // User makes choice
+      // function userPlay() {
+      //   // Trying to make our buttons work
+      //   const buttons = document.querySelectorAll('button');
+
+      //   let playerSelection;
+
+      //   buttons.forEach((button) => {
+      //     button.addEventListener('click', () => {
+      //       //console.log(button.id);
+      //       playerSelection = button.id;
+      //       console.log(playerSelection);
+      //       return playerSelection;
+      //     });
+
+      //   });
+      //   //return playerSelection;
+
+      //   // Below prompted user for text input
+      //   // let playerSelection = prompt();
+      //   // playerSelection =
+      //   //   playerSelection[0].toUpperCase() +
+      //   //   playerSelection.slice(1).toLowerCase();
+      //   // return playerSelection;
+      // }
       // Computer makes choice
       function computerPlay() {
         const items = ["Rock", "Paper", "Scissors"];
@@ -68,22 +107,23 @@
 
       // Play 5 rounds
       function game() {
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 1; i++) {
           const playerSelection = userPlay();
           const computerSelection = computerPlay();
+          console.log(playerSelection);
 
-          console.log(playRound(playerSelection, computerSelection));
+          //console.log(playRound(playerSelection, computerSelection));
         }
 
         // Print final scores
-        console.log(`You: ${userScore} Computer: ${computerScore} Tie: ${tie}`);
+        // console.log(`You: ${userScore} Computer: ${computerScore} Tie: ${tie}`);
       }
 
       let userScore = 0;
       let computerScore = 0;
       let tie = 0;
 
-      game();
+      //game();
     </script>
   </body>
 </html>
